@@ -37,7 +37,7 @@ app.post('/getBalance', async (req, res) => {
   res.send(response)
 });
 
-app.post('/sendCoin', async (req, res) => {
+app.post('/mintCoin', async (req, res) => {
   //console.log(req.body);
 
   const newBalance = await truffle_connect.mintKet();

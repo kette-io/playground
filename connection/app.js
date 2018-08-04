@@ -2,7 +2,7 @@ const contract = require('truffle-contract');
 
 const metacoin_artifact = require('../build/contracts/MetaCoin.json');
 
-const ket_artifact = require('../KetXcert.json');
+const ket_artifact = require('../build/contracts/Item.json');
 
 var MetaCoin = contract(metacoin_artifact);
 var KetRegistry = contract(ket_artifact);
@@ -51,18 +51,18 @@ module.exports = function (web3) {
       const account = accounts[0];
       console.log(account);
 
-      const config = [ '0x000000000000000000000000000000000000000000000000000000006c8d3d89' ]
+      const config = ['0x000000000000000000000000000000000000000000000000000000006c8d3d89']
       const data = [];
       console.log("before");
       try {
         await ketRegistryInstance.mint(
-          account, 
-          "0x6d255fc3390ee6b41191da315958b7d6a1e5b17904cc7683558f98acc57977b4", 
-          'url', 
-          "1e205550c271490347e5e2393a02e94d284bbe9903f023ba098355b8d75974c8", 
-          config, 
-          data, 
-          { from: account, gas: 4612388 });
+          account,
+          "0x7d255fc3491ee6b51191da315958b7d6a1e5b17904cc7683558f98acc57977b4",
+          'url',
+          "1e205550c271490347e5e2393a02e94d284bbe9903f023ba098355b8d75974c8",
+          config,
+          data,
+          { from: account, gas: 300000 });
         console.log("after");
       } catch (e) {
         console.log("error");

@@ -28,6 +28,7 @@
     "nodemon": "^1.14.12",
     "truffle-contract": "^3.0.6",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
-    "web3": "^1.0.0-beta.35"
+    "web3": "^1.0.0-beta.35",
+    "@0xcert/ethereum-xcert": "^1.7.0"
   }
 }
