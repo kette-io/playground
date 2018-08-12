@@ -38,16 +38,8 @@ app.post('/getBalance', async (req, res) => {
 });
 
 app.post('/mintCoin', async (req, res) => {
-  //console.log(req.body);
-
   const newBalance = await truffle_connect.mintKet();
-  /*
-  let amount = req.body.amount;
-  let sender = req.body.sender;
-  let receiver = req.body.receiver;
-  */
-  //const newBalance = await truffle_connect.sendCoin(amount, sender, receiver);
-  res.send("lol");
+  res.send(newBalance);
 });
 
 app.listen(port, () => {

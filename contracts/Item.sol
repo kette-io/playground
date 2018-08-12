@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "@0xcert/ethereum-xcert/contracts/tokens/Xcert.sol";
+import "@0xcert/ethereum-xcert/contracts/tokens/Xcert.sol"; // solhint-disable-line
 
 /**
  * @dev This is an example implementation of the Xcert smart contract.
@@ -14,16 +14,10 @@ contract Item is Xcert {
    * @param _conventionId A bytes4 of keccak256 of json schema representing 0xcert protocol
    * convention.
    */
-  constructor(
-    string _name,
-    string _symbol,
-    bytes4 _conventionId
-  )
-    public
-  {
-    nftName = _name;
-    nftSymbol = _symbol;
-    nftConventionId = _conventionId;
-  }
+    constructor(string _name, string _symbol, bytes4 _conventionId) public {
+        nftName = _name;
+        nftSymbol = _symbol;
+        nftConventionId = _conventionId;
+    }
 
 }

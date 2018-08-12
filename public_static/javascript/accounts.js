@@ -34,7 +34,7 @@ $(document).ready(function () {
     $('#status').text("Sending...");
     let amount = $('#amount').val();
     let receiver = $('#receiver').val();
-    $.post('/sendCoin', {amount : amount, sender : selectedAccount, receiver : receiver}, function (response) {
+    $.post('/mintCoin', {amount : amount, sender : selectedAccount, receiver : receiver}, function (response) {
       $('#balance').text(response);
       $('#status').text("Sent!!");
     })

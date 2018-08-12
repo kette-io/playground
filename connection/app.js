@@ -1,10 +1,7 @@
 const contract = require('truffle-contract');
 
-const metacoin_artifact = require('../build/contracts/MetaCoin.json');
-
 const ket_artifact = require('../build/contracts/Item.json');
 
-var MetaCoin = contract(metacoin_artifact);
 var KetRegistry = contract(ket_artifact);
 
 module.exports = function (web3) {
@@ -19,10 +16,7 @@ module.exports = function (web3) {
     refreshBalance: async function (account) {
 
       try {
-        const metaCoinInstance = await makeMetaCoinContractInstance(web3);
-        const balance = await metaCoinInstance.getBalance.call(account, { from: account });
-        return balance.valueOf();
-
+        return "not implemented yet"
       }
       catch (e) {
         console.log(e);
@@ -30,11 +24,8 @@ module.exports = function (web3) {
       }
     },
 
-    sendCoin: async function (amount, sender, receiver) {
-      const metaCoinInstance = await makeMetaCoinContractInstance(web3);
-      await metaCoinInstance.sendCoin(receiver, amount, { from: sender })
-      const newBalance = await this.refreshBalance(sender);
-      return newBalance;
+    sendCoin: async function (id, sender, receiver) {
+      return "not implemented";
     },
 
     mintKet: async function () {
@@ -53,7 +44,7 @@ module.exports = function (web3) {
 
       const config = ['0x000000000000000000000000000000000000000000000000000000006c8d3d89']
       const data = [];
-      console.log("before");
+
       try {
         await ketRegistryInstance.mint(
           account,
@@ -63,7 +54,7 @@ module.exports = function (web3) {
           config,
           data,
           { from: account, gas: 300000 });
-        console.log("after");
+
       } catch (e) {
         console.log("error");
         console.log(e);
