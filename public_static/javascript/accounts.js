@@ -32,9 +32,9 @@ $(document).ready(function () {
 
   $('#send').click(function () {
     $('#status').text("Sending...");
-    let amount = $('#amount').val();
+    let tokenId = $('#tokenId').val();
     let receiver = $('#receiver').val();
-    $.post('/mintCoin', {amount : amount, sender : selectedAccount, receiver : receiver}, function (response) {
+    $.post('/mintCoin', {tokenId : tokenId, sender : selectedAccount, receiver : receiver}, function (response) {
       $('#balance').text(response);
       $('#status').text("Sent!!");
     })

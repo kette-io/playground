@@ -5,7 +5,7 @@ import "@0xcert/ethereum-xcert/contracts/tokens/Xcert.sol"; // solhint-disable-l
 /**
  * @dev This is an example implementation of the Xcert smart contract.
  */
-contract Item is Xcert {
+contract Bicycle is Xcert {
 
   /**
    * @dev Contract constructor.

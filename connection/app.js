@@ -1,8 +1,8 @@
 const contract = require('truffle-contract');
 
-const ket_artifact = require('../build/contracts/Item.json');
+const bicycle_artifact = require('../build/contracts/Bicycle.json');
 
-var KetRegistry = contract(ket_artifact);
+var BicycleRegistry = contract(bicycle_artifact);
 
 module.exports = function (web3) {
 
@@ -28,15 +28,15 @@ module.exports = function (web3) {
       return "not implemented";
     },
 
-    mintKet: async function () {
-      KetRegistry.setProvider(web3.currentProvider);
+    mintKet: async function (tokenId, receiver) {
+      BicycleRegistry.setProvider(web3.currentProvider);
 
-      if (typeof KetRegistry.currentProvider.sendAsync !== "function") {
-        KetRegistry.currentProvider.sendAsync = function () {
-          return KetRegistry.currentProvider.send.apply(KetRegistry.currentProvider, arguments);
+      if (typeof BicycleRegistry.currentProvider.sendAsync !== "function") {
+        BicycleRegistry.currentProvider.sendAsync = function () {
+          return BicycleRegistry.currentProvider.send.apply(BicycleRegistry.currentProvider, arguments);
         };
       }
-      const ketRegistryInstance = await KetRegistry.deployed();
+      const bicycle_Registry_Instance = await BicycleRegistry.deployed();
 
       const accounts = await web3.eth.getAccounts();
       const account = accounts[0];
@@ -45,12 +45,14 @@ module.exports = function (web3) {
       const config = ['0x000000000000000000000000000000000000000000000000000000006c8d3d89']
       const data = [];
 
+      console.log(tokenId);
+      console.log(receiver);
       try {
-        await ketRegistryInstance.mint(
-          account,
-          "0x7d255fc3491ee6b51191da315958b7d6a1e5b17904cc7683558f98acc57977b4",
+        await bicycle_Registry_Instance.mint(
+          receiver,
+          tokenId,
           'url',
-          "1e205550c271490347e5e2393a02e94d284bbe9903f023ba098355b8d75974c8",
+          tokenId, //not yet clear how to exactly create proof
           config,
           data,
           { from: account, gas: 300000 });
@@ -59,7 +61,7 @@ module.exports = function (web3) {
         console.log("error");
         console.log(e);
       }
-      const count = await ketRegistryInstance.balanceOf(accounts[0]);
+      const count = await bicycle_Registry_Instance.balanceOf(receiver);
       console.log(count);
     }
   }

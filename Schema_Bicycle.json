@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Represents a bicycle. Electric or classical",
+    "properties": {
+        "frameNumber": {
+            "descripton": "Framenumber of the bicycle.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "frameNumber"
+    ],
+    "title": "Bicycle",
+    "type": "object"
+}
