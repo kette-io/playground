@@ -16,7 +16,18 @@ module.exports = function (web3) {
     refreshBalance: async function (account) {
 
       try {
-        return "not implemented yet"
+        BicycleRegistry.setProvider(web3.currentProvider);
+
+        if (typeof BicycleRegistry.currentProvider.sendAsync !== "function") {
+          BicycleRegistry.currentProvider.sendAsync = function () {
+            return BicycleRegistry.currentProvider.send.apply(BicycleRegistry.currentProvider, arguments);
+          };
+        }
+        const bicycle_Registry_Instance = await BicycleRegistry.deployed();
+        const balanceResult = await bicycle_Registry_Instance.balanceOf(account);
+        const balance = balanceResult.valueOf();
+        
+        return balance;
       }
       catch (e) {
         console.log(e);
@@ -24,11 +35,8 @@ module.exports = function (web3) {
       }
     },
 
-    sendCoin: async function (id, sender, receiver) {
-      return "not implemented";
-    },
-
     mintKet: async function (tokenId, receiver) {
+
       BicycleRegistry.setProvider(web3.currentProvider);
 
       if (typeof BicycleRegistry.currentProvider.sendAsync !== "function") {
@@ -45,8 +53,6 @@ module.exports = function (web3) {
       const config = ['0x000000000000000000000000000000000000000000000000000000006c8d3d89']
       const data = [];
 
-      console.log(tokenId);
-      console.log(receiver);
       try {
         await bicycle_Registry_Instance.mint(
           receiver,
@@ -56,13 +62,13 @@ module.exports = function (web3) {
           config,
           data,
           { from: account, gas: 300000 });
+          return true;
 
       } catch (e) {
         console.log("error");
         console.log(e);
+        return false;
       }
-      const count = await bicycle_Registry_Instance.balanceOf(receiver);
-      console.log(count);
     }
   }
 
