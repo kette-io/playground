@@ -1,0 +1,19 @@
+{
+    "owner": {
+        "name": "owner",
+        "address": "0xfcad0b19bb29d4674531d6f115237e16afce377c",
+        "privateKey": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    },
+    "users": [
+        {
+            "name": "alice",
+            "address": "0x405F8018A74c793C2F48AAa5275Ad41BD151B7d6",
+            "privateKey": "0x757eae04bc4988ed112736052168ed506cd681f187b58a4d181e1328edc979a2"
+        },
+        {
+            "name": "bob",
+            "address": "0xe41675DbAB3A66a452aa187F4bce63acf42bf4fD",
+            "privateKey": "0x0f6c30b7447616c49b5b99c969f34d4598d83f63bcaa75972723ccbda7a6e281"
+        }
+    ]
+}
