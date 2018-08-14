@@ -3,18 +3,18 @@
   "version": "0.0.2",
   "description": "Make API-Endpoints for Ethereum BlockChain",
   "scripts": {
-    "start": "truffle migrate --reset && nodemon server.js",
+    "start": "nodemon server.js",
     "test": "truffle test test/*"
   },
   "author": "Arvind & Pranav",
   "license": "MIT",
   "dependencies": {
+    "@0xcert/ethereum-xcert": "^1.7.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "nodemon": "^1.14.12",
     "truffle-contract": "^3.0.6",
-    "truffle-hdwallet-provider-privkey": "^0.3.0",
-    "web3": "^1.0.0-beta.35",
-    "@0xcert/ethereum-xcert": "^1.7.0"
+    "truffle-hdwallet-provider": "0.0.6",
+    "web3": "^1.0.0-beta.35"
   }
 }

@@ -4,15 +4,11 @@ const bicycle_artifact = require('../build/contracts/Bicycle.json');
 
 var BicycleRegistry = contract(bicycle_artifact);
 
-const users = require('../accounts.json').users
+const users = require('../config.json').users;
 
 module.exports = function (web3) {
 
   const app = {
-
-    getUsers: async function () {
-      return users.map(x => x.name);
-    },
 
     register: async function (frameNumber, receiver) {
 
@@ -29,7 +25,7 @@ module.exports = function (web3) {
       const bicycle_Registry_Instance = await BicycleRegistry.deployed();
 
       const accounts = await web3.eth.getAccounts();
-      const account = accounts[0];
+      const account = accounts[0].toLowerCase();
 
       const config = ['does not expire']
       const data = [];
