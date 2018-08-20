@@ -15,14 +15,7 @@ module.exports = function (web3) {
       const receiverAddress = users.find(x => x.name === receiver).address;
       const tokenId = web3.utils.sha3(frameNumber);
 
-      BicycleRegistry.setProvider(web3.currentProvider);
-
-      if (typeof BicycleRegistry.currentProvider.sendAsync !== "function") {
-        BicycleRegistry.currentProvider.sendAsync = function () {
-          return BicycleRegistry.currentProvider.send.apply(BicycleRegistry.currentProvider, arguments);
-        };
-      }
-      const bicycle_Registry_Instance = await BicycleRegistry.deployed();
+       const bicycle_Registry_Instance = await makeInstance(BicycleRegistry, web3);
 
       const accounts = await web3.eth.getAccounts();
       const account = accounts[0].toLowerCase();
@@ -51,14 +44,14 @@ module.exports = function (web3) {
   return app;
 }
 
-makeMetaCoinContractInstance = async (web3) => {
-  MetaCoin.setProvider(web3.currentProvider);
+makeInstance = async (contract, web3) => {
+  contract.setProvider(web3.currentProvider);
 
-  if (typeof MetaCoin.currentProvider.sendAsync !== "function") {
-    MetaCoin.currentProvider.sendAsync = function () {
-      return MetaCoin.currentProvider.send.apply(MetaCoin.currentProvider, arguments);
+  if (typeof contract.currentProvider.sendAsync !== "function") {
+    contract.currentProvider.sendAsync = function () {
+      return contract.currentProvider.send.apply(contract.currentProvider, arguments);
     };
   }
-  const metaCoinInstance = await MetaCoin.deployed();
-  return metaCoinInstance;
+  const instance = await contract.deployed();
+  return instance;
 }

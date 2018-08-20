@@ -4,7 +4,8 @@
   "description": "Make API-Endpoints for Ethereum BlockChain",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "truffle test test/*"
+    "test": "truffle test test/*",
+    "flatten": "mkdir -p build && solidity_flattener --solc-paths=\"@0xcert/=$(pwd)/node_modules/@0xcert/\" --output build/complete.sol contracts/Bicycle.sol"
   },
   "author": "Arvind & Pranav",
   "license": "MIT",
