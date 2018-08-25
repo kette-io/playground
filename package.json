@@ -1,5 +1,5 @@
 {
-  "name": "Express-Box",
+  "name": "kette-playground",
   "version": "0.0.2",
   "description": "Make API-Endpoints for Ethereum BlockChain",
   "scripts": {
@@ -11,11 +11,11 @@
   "license": "MIT",
   "dependencies": {
     "@0xcert/ethereum-xcert": "^1.7.0",
+    "bignumber.js": "^7.2.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "nodemon": "^1.14.12",
-    "truffle-contract": "^3.0.6",
-    "truffle-hdwallet-provider": "0.0.6",
-    "web3": "^1.0.0-beta.35"
+    "truffle-contract": "^4.0.0-beta.0",
+    "truffle-hdwallet-provider": "^1.0.0-web3one.0"
   }
 }

@@ -20,7 +20,7 @@ module.exports = function (web3) {
       const accounts = await web3.eth.getAccounts();
       const account = accounts[0].toLowerCase();
 
-      const config = ['does not expire']
+      const config = [web3.utils.asciiToHex("does not expire")]
       const data = [];
       try {
         const result = await bicycle_Registry_Instance.mint(

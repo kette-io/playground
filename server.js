@@ -8,8 +8,8 @@ const bodyParser = require('body-parser');
 const config = require("./config.json");
 const HDWalletProvider = require('truffle-hdwallet-provider');
 
-//const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-const web3 = new Web3(new HDWalletProvider(config.mnemonic, "https://rinkeby.infura.io/v3/" + config.infuraKey, 1));
+const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+//const web3 = new Web3(new HDWalletProvider(config.mnemonic, "https://rinkeby.infura.io/v3/" + config.infuraKey, 1));
 
 const registryProxy = makeRegistryProxy(web3);
 
